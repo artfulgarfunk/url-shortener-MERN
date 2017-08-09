@@ -9754,7 +9754,7 @@ var contentNode = document.getElementById('contents');
 var component = _react2['default'].createElement(
   'h1',
   null,
-  ' Hello Compile Whirled webpacked again and again '
+  ' Hello Whirled! '
 );
 _reactDom2['default'].render(component, contentNode);
 
