@@ -1,0 +1,26 @@
+{
+  "name": "mern-url-shortener",
+  "version": "1.0.0",
+  "description": "MERN Stack URL Shortener",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -w server.js server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artfulgarfunk/url-shortener-MERN.git"
+  },
+  "author": "Jack Henderson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artfulgarfunk/url-shortener-MERN/issues"
+  },
+  "homepage": "https://github.com/artfulgarfunk/url-shortener-MERN#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
