@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Container from './components/container.jsx'
 
 var contentNode = document.getElementById('contents');
-var component = <h1> Hello Whirled! </h1>;
+var component = <Container />;
 ReactDOM.render(component, contentNode);
