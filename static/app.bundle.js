@@ -22437,23 +22437,46 @@ var Container = function (_React$Component) {
   function Container() {
     _classCallCheck(this, Container);
 
-    return _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).call(this));
+
+    _this.state = {
+      inputVal: ''
+    };
+    return _this;
   }
 
   _createClass(Container, [{
+    key: 'inputChangedHandler',
+    value: function () {
+      function inputChangedHandler(valueFromChild) {
+        this.setState({
+          inputVal: valueFromChild
+        });
+      }
+
+      return inputChangedHandler;
+    }()
+  }, {
     key: 'render',
     value: function () {
       function render() {
+        var _this2 = this;
+
         return _react2['default'].createElement(
           'div',
           null,
+          _react2['default'].createElement(_InputArea2['default'], { newVal: function () {
+              function newVal(vfc) {
+                return _this2.inputChangedHandler(vfc);
+              }
+
+              return newVal;
+            }() }),
           _react2['default'].createElement(
-            'h2',
+            'h4',
             null,
-            ' Shortening URLs since 1917 '
-          ),
-          _react2['default'].createElement(_InputArea2['default'], null),
-          _react2['default'].createElement(_OutputArea2['default'], null)
+            this.state.inputVal
+          )
         );
       }
 
@@ -22496,23 +22519,36 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Container = function (_React$Component) {
-  _inherits(Container, _React$Component);
+var InputArea = function (_React$Component) {
+  _inherits(InputArea, _React$Component);
 
-  function Container() {
-    _classCallCheck(this, Container);
+  function InputArea(props) {
+    _classCallCheck(this, InputArea);
 
-    return _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (InputArea.__proto__ || Object.getPrototypeOf(InputArea)).call(this, props));
+
+    _this.onChange = _this.onChange.bind(_this);
+    return _this;
   }
 
-  _createClass(Container, [{
+  _createClass(InputArea, [{
+    key: 'onChange',
+    value: function () {
+      function onChange(event) {
+        this.props.newVal(event.target.value);
+      }
+
+      return onChange;
+    }()
+  }, {
     key: 'render',
     value: function () {
       function render() {
         return _react2['default'].createElement(
-          'h1',
+          'div',
           null,
-          ' Input '
+          'InputArea',
+          _react2['default'].createElement('input', { type: 'text', onChange: this.onChange })
         );
       }
 
@@ -22520,10 +22556,10 @@ var Container = function (_React$Component) {
     }()
   }]);
 
-  return Container;
+  return InputArea;
 }(_react2['default'].Component);
 
-exports['default'] = Container;
+exports['default'] = InputArea;
 ;
 
 /***/ }),

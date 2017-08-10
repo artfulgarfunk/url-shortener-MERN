@@ -21,7 +21,8 @@
   "homepage": "https://github.com/artfulgarfunk/url-shortener-MERN#readme",
   "dependencies": {
     "chai": "^4.1.1",
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "mongodb": "^2.2.31"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
