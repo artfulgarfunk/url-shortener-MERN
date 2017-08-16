@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/artfulgarfunk/url-shortener-MERN#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "chai": "^4.1.1",
     "express": "^4.15.4",
     "mongodb": "^2.2.31"
