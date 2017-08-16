@@ -8,7 +8,8 @@ A single page app where a user inputs a link and receives a short URL in return 
 ## Next Steps
 
 ## Technologies
-## Build
+
+### Build
 - MongoDB
 - Express
 - React
@@ -16,7 +17,7 @@ A single page app where a user inputs a link and receives a short URL in return 
 - React Bootstrap
 - React Router
 
-## Test Suite
+### Test Suite
 - Sinon
 - Chai
 - Mocha
