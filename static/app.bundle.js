@@ -9760,49 +9760,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var contentNode = document.getElementById('contents');
 
-var urls = [{
-  id: 1, longURL: 'www.aVeryLongUrl.com', shortURL: 'www.shortUrl.com'
-}, {
-  id: 2, longURL: 'www.AnotherLongOne.com', shortURL: 'www.anotherShort.com'
-}];
-
-var Container = function (_React$Component) {
-  _inherits(Container, _React$Component);
-
-  function Container() {
-    _classCallCheck(this, Container);
-
-    return _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).apply(this, arguments));
-  }
-
-  _createClass(Container, [{
-    key: 'render',
-    value: function () {
-      function render() {
-        return _react2['default'].createElement(
-          'div',
-          null,
-          _react2['default'].createElement(
-            'h1',
-            null,
-            ' Shortening URLs since 1817 '
-          ),
-          _react2['default'].createElement('hr', null),
-          _react2['default'].createElement(UrlTable, { urls: urls }),
-          _react2['default'].createElement('hr', null),
-          _react2['default'].createElement(UrlFilter, null),
-          _react2['default'].createElement('hr', null),
-          _react2['default'].createElement(UrlAdd, null)
-        );
-      }
-
-      return render;
-    }()
-  }]);
-
-  return Container;
-}(_react2['default'].Component);
-
 function UrlTable(props) {
   var urlRows = props.urls.map(function (url) {
     return _react2['default'].createElement(UrlRow, { key: url.id, url: url });
@@ -9867,23 +9824,50 @@ var UrlRow = function () {
   return UrlRow;
 }();
 
-var UrlAdd = function (_React$Component2) {
-  _inherits(UrlAdd, _React$Component2);
+var UrlAdd = function (_React$Component) {
+  _inherits(UrlAdd, _React$Component);
 
   function UrlAdd() {
     _classCallCheck(this, UrlAdd);
 
-    return _possibleConstructorReturn(this, (UrlAdd.__proto__ || Object.getPrototypeOf(UrlAdd)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (UrlAdd.__proto__ || Object.getPrototypeOf(UrlAdd)).call(this));
+
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
   }
 
   _createClass(UrlAdd, [{
+    key: 'handleSubmit',
+    value: function () {
+      function handleSubmit(e) {
+        e.preventDefault();
+        var form = document.forms.urlAdd;
+        this.props.shortenURL({
+          longURL: form.longURL.value
+        });
+        console.log('HELLO 1');
+        form.longURL.value = "";form.shortURL.value = "";
+      }
+
+      return handleSubmit;
+    }()
+  }, {
     key: 'render',
     value: function () {
       function render() {
         return _react2['default'].createElement(
           'div',
           null,
-          ' Url Add Placeholder '
+          _react2['default'].createElement(
+            'form',
+            { name: 'urlAdd', onSubmit: this.handleSubmit },
+            _react2['default'].createElement('input', { type: 'text', name: 'longURL', placeholder: 'Long URl' }),
+            _react2['default'].createElement(
+              'button',
+              null,
+              ' Add '
+            )
+          )
         );
       }
 
@@ -9894,8 +9878,8 @@ var UrlAdd = function (_React$Component2) {
   return UrlAdd;
 }(_react2['default'].Component);
 
-var UrlFilter = function (_React$Component3) {
-  _inherits(UrlFilter, _React$Component3);
+var UrlFilter = function (_React$Component2) {
+  _inherits(UrlFilter, _React$Component2);
 
   function UrlFilter() {
     _classCallCheck(this, UrlFilter);
@@ -9919,6 +9903,89 @@ var UrlFilter = function (_React$Component3) {
   }]);
 
   return UrlFilter;
+}(_react2['default'].Component);
+
+var urls = [{
+  id: 1, longURL: 'www.aVeryLongUrl.com', shortURL: 'www.shortUrl.com'
+}, {
+  id: 2, longURL: 'www.AnotherLongOne.com', shortURL: 'www.anotherShort.com'
+}, {
+  id: 3, longURL: 'www.YetAnotherLongURL.com', shortURL: 'www.yetAno.com'
+}];
+
+var Container = function (_React$Component3) {
+  _inherits(Container, _React$Component3);
+
+  function Container() {
+    _classCallCheck(this, Container);
+
+    var _this3 = _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).call(this));
+
+    _this3.state = { urls: [] };
+    _this3.shortenURL = _this3.shortenURL.bind(_this3);
+    return _this3;
+  }
+
+  _createClass(Container, [{
+    key: 'componentDidMount',
+    value: function () {
+      function componentDidMount() {
+        this.loadData();
+      }
+
+      return componentDidMount;
+    }()
+  }, {
+    key: 'loadData',
+    value: function () {
+      function loadData() {
+        var _this4 = this;
+
+        setTimeout(function () {
+          _this4.setState({ urls: urls });
+        }, 500);
+      }
+
+      return loadData;
+    }()
+  }, {
+    key: 'shortenURL',
+    value: function () {
+      function shortenURL(newURL) {
+        var newURLS = this.state.urls.slice();
+        newURL.id = this.state.urls.length + 1;
+        newURLS.push(newURL);
+        this.setState({ urls: newURLS });
+      }
+
+      return shortenURL;
+    }()
+  }, {
+    key: 'render',
+    value: function () {
+      function render() {
+        return _react2['default'].createElement(
+          'div',
+          null,
+          _react2['default'].createElement(
+            'h1',
+            null,
+            ' Shortening URLs since 1817 '
+          ),
+          _react2['default'].createElement('hr', null),
+          _react2['default'].createElement(UrlTable, { urls: this.state.urls }),
+          _react2['default'].createElement('hr', null),
+          _react2['default'].createElement(UrlFilter, null),
+          _react2['default'].createElement('hr', null),
+          _react2['default'].createElement(UrlAdd, { shortenURL: this.shortenURL })
+        );
+      }
+
+      return render;
+    }()
+  }]);
+
+  return Container;
 }(_react2['default'].Component);
 
 _reactDom2['default'].render(_react2['default'].createElement(Container, null), contentNode);
