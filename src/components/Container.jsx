@@ -4,18 +4,6 @@ import {UrlTable} from './UrlTable.jsx';
 import {UrlFilter} from './UrlFilter.jsx';
 import {UrlAdd} from './UrlAdd.jsx';
 
-const urls = [
-  {
-    id: 1, longURL: 'www.aVeryLongUrl.com', shortURL: 'www.shortUrl.com',
-  },
-  {
-    id: 2, longURL: 'www.AnotherLongOne.com', shortURL: 'www.anotherShort.com'
-  },
-  {
-    id: 3, longURL: 'www.YetAnotherLongURL.com', shortURL: 'www.yetAno.com'
-  }
-]
-
 export class Container extends React.Component {
   constructor() {
     super();
@@ -27,10 +15,19 @@ export class Container extends React.Component {
     this.loadData();
   }
 
+
   loadData() {
-    setTimeout(() => {
-      this.setState({ urls: urls })
-    }, 500);
+    fetch('/shorts').then(response => response.json()).then(data => {
+      console.log("Total URL Count:", data._metadata.total_count);
+      data.records.forEach(url => {
+        url.created = new Date(url.created);
+        if (url.completionDate)
+        url.completionDate = new Date(url.completionDate);
+      });
+      this.setState({ urls: data.records });
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   shortenURL(newURL) {

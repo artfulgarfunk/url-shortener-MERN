@@ -22687,14 +22687,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var urls = [{
-  id: 1, longURL: 'www.aVeryLongUrl.com', shortURL: 'www.shortUrl.com'
-}, {
-  id: 2, longURL: 'www.AnotherLongOne.com', shortURL: 'www.anotherShort.com'
-}, {
-  id: 3, longURL: 'www.YetAnotherLongURL.com', shortURL: 'www.yetAno.com'
-}];
-
 var Container = exports.Container = function (_React$Component) {
   _inherits(Container, _React$Component);
 
@@ -22717,15 +22709,31 @@ var Container = exports.Container = function (_React$Component) {
 
       return componentDidMount;
     }()
+
+    // loadData() {
+    //   setTimeout(() => {
+    //     this.setState({ urls: urls })
+    //   }, 500);
+    // }
+
   }, {
     key: 'loadData',
     value: function () {
       function loadData() {
         var _this2 = this;
 
-        setTimeout(function () {
-          _this2.setState({ urls: urls });
-        }, 500);
+        fetch('/shorts').then(function (response) {
+          return response.json();
+        }).then(function (data) {
+          console.log("Total URL Count:", data._metadata.total_count);
+          data.records.forEach(function (url) {
+            url.created = new Date(url.created);
+            if (url.completionDate) url.completionDate = new Date(url.completionDate);
+          });
+          _this2.setState({ urls: data.records });
+        })['catch'](function (err) {
+          console.log(err);
+        });
       }
 
       return loadData;
