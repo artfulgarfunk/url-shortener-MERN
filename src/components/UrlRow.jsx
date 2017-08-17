@@ -6,5 +6,6 @@ export const UrlRow = (props) => (
     <td>{props.url.id}</td>
     <td>{props.url.longURL}</td>
     <td>{props.url.shortURL}</td>
+    <td>{props.url.shortened} </td>
   </tr>
 )

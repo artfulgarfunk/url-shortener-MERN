@@ -11,6 +11,7 @@ export function UrlTable(props) {
           <th> Id </th>
           <th> Long Url </th>
           <th> Short Url </th>
+          <th> Shortend </th>
         </tr>
       </thead>
       <tbody>{urlRows}</tbody>

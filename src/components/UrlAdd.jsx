@@ -13,7 +13,6 @@ export class UrlAdd extends React.Component {
     this.props.shortenURL({
       longURL: form.longURL.value,
     });
-    console.log('HELLO 1');
     form.longURL.value = ""; form.shortURL.value = "";
   }
   render() {

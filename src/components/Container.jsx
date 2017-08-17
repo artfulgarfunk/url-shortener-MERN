@@ -15,26 +15,28 @@ export class Container extends React.Component {
     this.loadData();
   }
 
-
+// Call to List API
   loadData() {
     fetch('/shorts').then(response => response.json()).then(data => {
       console.log("Total URL Count:", data._metadata.total_count);
-      data.records.forEach(url => {
-        url.created = new Date(url.created);
-        if (url.completionDate)
-        url.completionDate = new Date(url.completionDate);
-      });
       this.setState({ urls: data.records });
     }).catch(err => {
       console.log(err);
     });
   }
 
+// Call to Create API
   shortenURL(newURL) {
-    const newURLS = this.state.urls.slice();
-    newURL.id = this.state.urls.length + 1;
-    newURLS.push(newURL);
-    this.setState({ urls: newURLS });
+    fetch('/shorts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newURL),
+    }).then(response => response.json()).then(updatedURL => {
+      const newURLs = this.state.urls.concat(updatedURL);
+      this.setState({ urls: newURLs});
+    }).catch(err => {
+      alert("Error in sending data to the server: " + err.message);
+     });
   }
 
   render () {

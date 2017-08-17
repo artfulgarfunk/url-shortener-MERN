@@ -9794,6 +9794,12 @@ var UrlRow = exports.UrlRow = function () {
         'td',
         null,
         props.url.shortURL
+      ),
+      _react2['default'].createElement(
+        'td',
+        null,
+        props.url.shortened,
+        ' '
       )
     );
   }
@@ -9852,6 +9858,11 @@ function UrlTable(props) {
           'th',
           null,
           ' Short Url '
+        ),
+        _react2['default'].createElement(
+          'th',
+          null,
+          ' Shortend '
         )
       )
     ),
@@ -9971,7 +9982,6 @@ var UrlAdd = exports.UrlAdd = function (_React$Component) {
         this.props.shortenURL({
           longURL: form.longURL.value
         });
-        console.log('HELLO 1');
         form.longURL.value = "";form.shortURL.value = "";
       }
 
@@ -22710,11 +22720,7 @@ var Container = exports.Container = function (_React$Component) {
       return componentDidMount;
     }()
 
-    // loadData() {
-    //   setTimeout(() => {
-    //     this.setState({ urls: urls })
-    //   }, 500);
-    // }
+    // Call to List API
 
   }, {
     key: 'loadData',
@@ -22726,10 +22732,6 @@ var Container = exports.Container = function (_React$Component) {
           return response.json();
         }).then(function (data) {
           console.log("Total URL Count:", data._metadata.total_count);
-          data.records.forEach(function (url) {
-            url.created = new Date(url.created);
-            if (url.completionDate) url.completionDate = new Date(url.completionDate);
-          });
           _this2.setState({ urls: data.records });
         })['catch'](function (err) {
           console.log(err);
@@ -22738,14 +22740,27 @@ var Container = exports.Container = function (_React$Component) {
 
       return loadData;
     }()
+
+    // Call to Create API
+
   }, {
     key: 'shortenURL',
     value: function () {
       function shortenURL(newURL) {
-        var newURLS = this.state.urls.slice();
-        newURL.id = this.state.urls.length + 1;
-        newURLS.push(newURL);
-        this.setState({ urls: newURLS });
+        var _this3 = this;
+
+        fetch('/shorts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newURL)
+        }).then(function (response) {
+          return response.json();
+        }).then(function (updatedURL) {
+          var newURLs = _this3.state.urls.concat(updatedURL);
+          _this3.setState({ urls: newURLs });
+        })['catch'](function (err) {
+          alert("Error in sending data to the server: " + err.message);
+        });
       }
 
       return shortenURL;
