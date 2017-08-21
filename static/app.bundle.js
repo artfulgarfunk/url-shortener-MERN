@@ -10001,7 +10001,7 @@ var UrlAdd = exports.UrlAdd = function (_React$Component) {
             _react2['default'].createElement(
               'button',
               null,
-              ' Add '
+              ' Shorten! '
             )
           )
         );
@@ -22707,6 +22707,7 @@ var Container = exports.Container = function (_React$Component) {
 
     _this.state = { urls: [] };
     _this.shortenURL = _this.shortenURL.bind(_this);
+    _this.serverSend = _this.serverSend.bind(_this);
     return _this;
   }
 
@@ -22744,14 +22745,15 @@ var Container = exports.Container = function (_React$Component) {
     // Call to Create API
 
   }, {
-    key: 'shortenURL',
+    key: 'serverSend',
     value: function () {
-      function shortenURL(newURL) {
+      function serverSend(newURL) {
         var _this3 = this;
 
         fetch('/shorts', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
+          // add in shortening method? then send long & short to server
           body: JSON.stringify(newURL)
         }).then(function (response) {
           return response.json();
@@ -22761,6 +22763,15 @@ var Container = exports.Container = function (_React$Component) {
         })['catch'](function (err) {
           alert("Error in sending data to the server: " + err.message);
         });
+      }
+
+      return serverSend;
+    }()
+  }, {
+    key: 'shortenURL',
+    value: function () {
+      function shortenURL(url) {
+        this.serverSend(url);
       }
 
       return shortenURL;
@@ -22778,11 +22789,11 @@ var Container = exports.Container = function (_React$Component) {
             ' Shortening URLs since 1817 '
           ),
           _react2['default'].createElement('hr', null),
+          _react2['default'].createElement(_UrlAdd.UrlAdd, { shortenURL: this.shortenURL }),
+          _react2['default'].createElement('hr', null),
           _react2['default'].createElement(_UrlTable.UrlTable, { urls: this.state.urls }),
           _react2['default'].createElement('hr', null),
-          _react2['default'].createElement(_UrlFilter.UrlFilter, null),
-          _react2['default'].createElement('hr', null),
-          _react2['default'].createElement(_UrlAdd.UrlAdd, { shortenURL: this.shortenURL })
+          _react2['default'].createElement(_UrlFilter.UrlFilter, null)
         );
       }
 

@@ -23,15 +23,27 @@ app.listen(3000, function() {
   console.log('URL Shortener started on port 3000');
 })
 
-app.get('/shorts', (req, res) => {
+app.get('/shorts/', (req, res) => {
   const metadata = { total_count: urls.length };
   res.json({ _metadata: metadata, records: urls });
 });
 
+// for getting a short url returned to the user
 app.post('/shorts', (req, res) => {
   const longURL = req.body;
   longURL.id = urls.length + 1;
+  console.log(req.url);
+  longURL.shortURL = req.url + "/" + longURL.id;
+  console.log(longURL.shortURL);
+  // longURL.shortened = new date () now or whatever time format
+  longURL.shortened = "A Certain Time Ago"
   urls.push(longURL);
-  // Send back FormInput to Client setState
   res.json(longURL);
+});
+
+
+app.get('/shorts/:urlId', (req, res) => {
+  url = urls[req.params.urlId-1];
+  console.log(url.longURL);
+  res.redirect(url.longURL);
 });

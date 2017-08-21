@@ -9,6 +9,7 @@ export class Container extends React.Component {
     super();
     this.state = { urls: [] };
     this.shortenURL = this.shortenURL.bind(this);
+    this.serverSend = this.serverSend.bind(this);
   }
 
   componentDidMount() {
@@ -26,10 +27,11 @@ export class Container extends React.Component {
   }
 
 // Call to Create API
-  shortenURL(newURL) {
+  serverSend(newURL) {
     fetch('/shorts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      // add in shortening method? then send long & short to server
       body: JSON.stringify(newURL),
     }).then(response => response.json()).then(updatedURL => {
       const newURLs = this.state.urls.concat(updatedURL);
@@ -39,16 +41,20 @@ export class Container extends React.Component {
      });
   }
 
+  shortenURL(url) {
+    this.serverSend(url)
+  }
+
   render () {
     return (
       <div>
       <h1> Shortening URLs since 1817 </h1>
       <hr />
+      <UrlAdd shortenURL={this.shortenURL}/>
+      <hr />
       <UrlTable urls={this.state.urls}/>
       <hr />
       <UrlFilter />
-      <hr />
-      <UrlAdd shortenURL={this.shortenURL}/>
       </div>
     );
   }

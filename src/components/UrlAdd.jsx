@@ -20,7 +20,7 @@ export class UrlAdd extends React.Component {
       <div>
         <form name="urlAdd" onSubmit={this.handleSubmit}>
           <input type="text" name="longURL" placeholder="Long URl" />
-          <button> Add </button>
+          <button> Shorten! </button>
         </form>
       </div>
     )
