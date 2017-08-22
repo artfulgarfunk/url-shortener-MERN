@@ -3,13 +3,19 @@ import ReactDOM from 'react-dom';
 import {UrlTable} from './UrlTable.jsx';
 import {UrlFilter} from './UrlFilter.jsx';
 import {UrlAdd} from './UrlAdd.jsx';
+import {UrlShortened} from './UrlShortened.jsx';
 
 export class Container extends React.Component {
   constructor() {
     super();
-    this.state = { urls: [] };
+    this.state = { urls: [],
+                   showShort: false,
+                   showPrevious: false, };
     this.shortenURL = this.shortenURL.bind(this);
     this.serverSend = this.serverSend.bind(this);
+    this.onShortenClick = this.onShortenClick.bind(this);
+    this.shortenedURL = this.shortenedURL.bind(this);
+    this.showPrevious = this.showPrevious.bind(this);
   }
 
   componentDidMount() {
@@ -18,7 +24,7 @@ export class Container extends React.Component {
 
 // Call to List API
   loadData() {
-    fetch('/shorts').then(response => response.json()).then(data => {
+    fetch('/short').then(response => response.json()).then(data => {
       console.log("Total URL Count:", data._metadata.total_count);
       this.setState({ urls: data.records });
     }).catch(err => {
@@ -28,7 +34,7 @@ export class Container extends React.Component {
 
 // Call to Create API
   serverSend(newURL) {
-    fetch('/shorts', {
+    fetch('/short', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       // add in shortening method? then send long & short to server
@@ -42,19 +48,48 @@ export class Container extends React.Component {
   }
 
   shortenURL(url) {
-    this.serverSend(url)
+    this.serverSend(url);
+    this.onShortenClick();
+  }
+
+  // Render UrlShortened Component when Shorten is clicked
+  onShortenClick() {
+    this.setState({
+      showShort: true,
+    });
+  }
+
+  // Get the current shortened url json object
+  shortenedURL() {
+    var urls = this.state.urls;
+    var last_url = urls[urls.length-1];
+    return last_url;
+  }
+
+  showPrevious() {
+    if (this.state.showPrevious == false) {
+    this.setState({
+      showPrevious: true,
+    });
+    } else {
+      this.setState({
+        showPrevious: false,
+      });
+    }
   }
 
   render () {
+    var shortenedURL = this.shortenedURL();
     return (
       <div>
       <h1> Shortening URLs since 1817 </h1>
       <hr />
       <UrlAdd shortenURL={this.shortenURL}/>
+      <button onClick={this.showPrevious}> Show/Hide Previous </button>
       <hr />
-      <UrlTable urls={this.state.urls}/>
+      {this.state.showShort ? <UrlShortened url={shortenedURL}/>: null }
       <hr />
-      <UrlFilter />
+      {this.state.showPrevious ? <UrlTable urls={this.state.urls}/>: null }
       </div>
     );
   }

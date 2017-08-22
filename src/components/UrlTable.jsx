@@ -7,11 +7,11 @@ export function UrlTable(props) {
   return (
     <table className="bordered-table">
       <thead>
+        <h2> Previously Shortened </h2>
         <tr>
-          <th> Id </th>
-          <th> Long Url </th>
-          <th> Short Url </th>
-          <th> Shortend </th>
+          <th> Orgnl </th>
+          <th> Shorter </th>
+          <th> Shortened </th>
         </tr>
       </thead>
       <tbody>{urlRows}</tbody>

@@ -787,7 +787,7 @@ module.exports = ExecutionEnvironment;
 
 
 
-var _prodInvariant = __webpack_require__(18);
+var _prodInvariant = __webpack_require__(19);
 
 var ReactCurrentOwner = __webpack_require__(10);
 
@@ -1283,7 +1283,7 @@ var _prodInvariant = __webpack_require__(3),
     _assign = __webpack_require__(4);
 
 var CallbackQueue = __webpack_require__(62);
-var PooledClass = __webpack_require__(15);
+var PooledClass = __webpack_require__(17);
 var ReactFeatureFlags = __webpack_require__(63);
 var ReactReconciler = __webpack_require__(20);
 var Transaction = __webpack_require__(29);
@@ -1538,7 +1538,7 @@ module.exports = ReactUpdates;
 
 var _assign = __webpack_require__(4);
 
-var PooledClass = __webpack_require__(15);
+var PooledClass = __webpack_require__(17);
 
 var emptyFunction = __webpack_require__(9);
 var warning = __webpack_require__(2);
@@ -2011,6 +2011,16 @@ module.exports = DOMProperty;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+module.exports = __webpack_require__(18);
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright 2014-present, Facebook, Inc.
  * All rights reserved.
@@ -2354,7 +2364,17 @@ module.exports = ReactElement;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 15 */
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(103);
+
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2472,17 +2492,7 @@ module.exports = PooledClass;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(17);
-
-
-/***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2503,7 +2513,7 @@ var _assign = __webpack_require__(4);
 var ReactBaseClasses = __webpack_require__(51);
 var ReactChildren = __webpack_require__(88);
 var ReactDOMFactories = __webpack_require__(92);
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 var ReactPropTypes = __webpack_require__(96);
 var ReactVersion = __webpack_require__(99);
 
@@ -2620,7 +2630,7 @@ module.exports = React;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2662,16 +2672,6 @@ function reactProdInvariant(code) {
 }
 
 module.exports = reactProdInvariant;
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(103);
-
 
 /***/ }),
 /* 20 */
@@ -5544,7 +5544,7 @@ var _prodInvariant = __webpack_require__(3);
 var ReactPropTypesSecret = __webpack_require__(71);
 var propTypesFactory = __webpack_require__(56);
 
-var React = __webpack_require__(17);
+var React = __webpack_require__(18);
 var PropTypes = propTypesFactory(React.isValidElement);
 
 var invariant = __webpack_require__(1);
@@ -6589,7 +6589,7 @@ module.exports = getEventCharCode;
 
 
 
-var _prodInvariant = __webpack_require__(18),
+var _prodInvariant = __webpack_require__(19),
     _assign = __webpack_require__(4);
 
 var ReactNoopUpdateQueue = __webpack_require__(52);
@@ -6919,7 +6919,7 @@ module.exports = getIteratorFn;
 
 var ReactCurrentOwner = __webpack_require__(10);
 var ReactComponentTreeHook = __webpack_require__(7);
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 
 var checkReactTypeSpec = __webpack_require__(93);
 
@@ -7386,7 +7386,7 @@ var _prodInvariant = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var PooledClass = __webpack_require__(15);
+var PooledClass = __webpack_require__(17);
 
 var invariant = __webpack_require__(1);
 
@@ -8602,7 +8602,7 @@ module.exports = instantiateReactComponent;
 
 var _prodInvariant = __webpack_require__(3);
 
-var React = __webpack_require__(17);
+var React = __webpack_require__(18);
 
 var invariant = __webpack_require__(1);
 
@@ -9195,7 +9195,7 @@ var _prodInvariant = __webpack_require__(3);
 
 var DOMLazyTree = __webpack_require__(21);
 var DOMProperty = __webpack_require__(13);
-var React = __webpack_require__(17);
+var React = __webpack_require__(18);
 var ReactBrowserEventEmitter = __webpack_require__(33);
 var ReactCurrentOwner = __webpack_require__(10);
 var ReactDOMComponentTree = __webpack_require__(5);
@@ -9765,11 +9765,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.UrlRow = undefined;
 
-var _react = __webpack_require__(16);
+var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(19);
+var _reactDom = __webpack_require__(16);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -9780,11 +9780,6 @@ var UrlRow = exports.UrlRow = function () {
     return _react2['default'].createElement(
       'tr',
       null,
-      _react2['default'].createElement(
-        'td',
-        null,
-        props.url.id
-      ),
       _react2['default'].createElement(
         'td',
         null,
@@ -9819,11 +9814,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.UrlTable = UrlTable;
 
-var _react = __webpack_require__(16);
+var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(19);
+var _reactDom = __webpack_require__(16);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -9842,27 +9837,27 @@ function UrlTable(props) {
       'thead',
       null,
       _react2['default'].createElement(
+        'h2',
+        null,
+        ' Previously Shortened '
+      ),
+      _react2['default'].createElement(
         'tr',
         null,
         _react2['default'].createElement(
           'th',
           null,
-          ' Id '
+          ' Orgnl '
         ),
         _react2['default'].createElement(
           'th',
           null,
-          ' Long Url '
+          ' Shorter '
         ),
         _react2['default'].createElement(
           'th',
           null,
-          ' Short Url '
-        ),
-        _react2['default'].createElement(
-          'th',
-          null,
-          ' Shortend '
+          ' Shortened '
         )
       )
     ),
@@ -9888,11 +9883,11 @@ exports.UrlFilter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(16);
+var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(19);
+var _reactDom = __webpack_require__(16);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -9945,11 +9940,11 @@ exports.UrlAdd = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(16);
+var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(19);
+var _reactDom = __webpack_require__(16);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -10021,11 +10016,11 @@ var UrlAdd = exports.UrlAdd = function (_React$Component) {
 "use strict";
 
 
-var _react = __webpack_require__(16);
+var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(19);
+var _reactDom = __webpack_require__(16);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -10063,7 +10058,7 @@ _reactDom2['default'].render(_react2['default'].createElement(_Container.Contain
 
 
 var PooledClass = __webpack_require__(89);
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 
 var emptyFunction = __webpack_require__(9);
 var traverseAllChildren = __webpack_require__(90);
@@ -10259,7 +10254,7 @@ module.exports = ReactChildren;
 
 
 
-var _prodInvariant = __webpack_require__(18);
+var _prodInvariant = __webpack_require__(19);
 
 var invariant = __webpack_require__(1);
 
@@ -10376,7 +10371,7 @@ module.exports = PooledClass;
 
 
 
-var _prodInvariant = __webpack_require__(18);
+var _prodInvariant = __webpack_require__(19);
 
 var ReactCurrentOwner = __webpack_require__(10);
 var REACT_ELEMENT_TYPE = __webpack_require__(53);
@@ -10622,7 +10617,7 @@ module.exports = KeyEscapeUtils;
 
 
 
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 
 /**
  * Create a factory that creates HTML tag elements.
@@ -10797,7 +10792,7 @@ module.exports = ReactDOMFactories;
 
 
 
-var _prodInvariant = __webpack_require__(18);
+var _prodInvariant = __webpack_require__(19);
 
 var ReactPropTypeLocationNames = __webpack_require__(94);
 var ReactPropTypesSecret = __webpack_require__(95);
@@ -10943,7 +10938,7 @@ module.exports = ReactPropTypesSecret;
 
 
 
-var _require = __webpack_require__(14),
+var _require = __webpack_require__(15),
     isValidElement = _require.isValidElement;
 
 var factory = __webpack_require__(56);
@@ -11578,7 +11573,7 @@ module.exports = '15.6.1';
 var _require = __webpack_require__(51),
     Component = _require.Component;
 
-var _require2 = __webpack_require__(14),
+var _require2 = __webpack_require__(15),
     isValidElement = _require2.isValidElement;
 
 var ReactNoopUpdateQueue = __webpack_require__(52);
@@ -12482,9 +12477,9 @@ module.exports = factory;
  */
 
 
-var _prodInvariant = __webpack_require__(18);
+var _prodInvariant = __webpack_require__(19);
 
-var ReactElement = __webpack_require__(14);
+var ReactElement = __webpack_require__(15);
 
 var invariant = __webpack_require__(1);
 
@@ -13205,7 +13200,7 @@ module.exports = BeforeInputEventPlugin;
 
 var _assign = __webpack_require__(4);
 
-var PooledClass = __webpack_require__(15);
+var PooledClass = __webpack_require__(17);
 
 var getTextContentAccessor = __webpack_require__(61);
 
@@ -17253,7 +17248,7 @@ module.exports = ReactDOMInput;
 
 var _assign = __webpack_require__(4);
 
-var React = __webpack_require__(17);
+var React = __webpack_require__(18);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDOMSelect = __webpack_require__(72);
 
@@ -18159,7 +18154,7 @@ module.exports = ReactChildReconciler;
 var _prodInvariant = __webpack_require__(3),
     _assign = __webpack_require__(4);
 
-var React = __webpack_require__(17);
+var React = __webpack_require__(18);
 var ReactComponentEnvironment = __webpack_require__(44);
 var ReactCurrentOwner = __webpack_require__(10);
 var ReactErrorUtils = __webpack_require__(36);
@@ -19367,7 +19362,7 @@ module.exports = flattenChildren;
 
 var _assign = __webpack_require__(4);
 
-var PooledClass = __webpack_require__(15);
+var PooledClass = __webpack_require__(17);
 var Transaction = __webpack_require__(29);
 var ReactInstrumentation = __webpack_require__(8);
 var ReactServerUpdateQueue = __webpack_require__(152);
@@ -20058,7 +20053,7 @@ var _assign = __webpack_require__(4);
 
 var EventListener = __webpack_require__(78);
 var ExecutionEnvironment = __webpack_require__(6);
-var PooledClass = __webpack_require__(15);
+var PooledClass = __webpack_require__(17);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactUpdates = __webpack_require__(11);
 
@@ -20300,7 +20295,7 @@ module.exports = ReactInjection;
 var _assign = __webpack_require__(4);
 
 var CallbackQueue = __webpack_require__(62);
-var PooledClass = __webpack_require__(15);
+var PooledClass = __webpack_require__(17);
 var ReactBrowserEventEmitter = __webpack_require__(33);
 var ReactInputSelection = __webpack_require__(79);
 var ReactInstrumentation = __webpack_require__(8);
@@ -22675,11 +22670,11 @@ exports.Container = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(16);
+var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(19);
+var _reactDom = __webpack_require__(16);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -22688,6 +22683,8 @@ var _UrlTable = __webpack_require__(84);
 var _UrlFilter = __webpack_require__(85);
 
 var _UrlAdd = __webpack_require__(86);
+
+var _UrlShortened = __webpack_require__(189);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -22705,9 +22702,14 @@ var Container = exports.Container = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).call(this));
 
-    _this.state = { urls: [] };
+    _this.state = { urls: [],
+      showShort: false,
+      showPrevious: false };
     _this.shortenURL = _this.shortenURL.bind(_this);
     _this.serverSend = _this.serverSend.bind(_this);
+    _this.onShortenClick = _this.onShortenClick.bind(_this);
+    _this.shortenedURL = _this.shortenedURL.bind(_this);
+    _this.showPrevious = _this.showPrevious.bind(_this);
     return _this;
   }
 
@@ -22729,7 +22731,7 @@ var Container = exports.Container = function (_React$Component) {
       function loadData() {
         var _this2 = this;
 
-        fetch('/shorts').then(function (response) {
+        fetch('/short').then(function (response) {
           return response.json();
         }).then(function (data) {
           console.log("Total URL Count:", data._metadata.total_count);
@@ -22750,7 +22752,7 @@ var Container = exports.Container = function (_React$Component) {
       function serverSend(newURL) {
         var _this3 = this;
 
-        fetch('/shorts', {
+        fetch('/short', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           // add in shortening method? then send long & short to server
@@ -22772,14 +22774,61 @@ var Container = exports.Container = function (_React$Component) {
     value: function () {
       function shortenURL(url) {
         this.serverSend(url);
+        this.onShortenClick();
       }
 
       return shortenURL;
+    }()
+
+    // Render UrlShortened Component when Shorten is clicked
+
+  }, {
+    key: 'onShortenClick',
+    value: function () {
+      function onShortenClick() {
+        this.setState({
+          showShort: true
+        });
+      }
+
+      return onShortenClick;
+    }()
+
+    // Get the current shortened url json object
+
+  }, {
+    key: 'shortenedURL',
+    value: function () {
+      function shortenedURL() {
+        var urls = this.state.urls;
+        var last_url = urls[urls.length - 1];
+        return last_url;
+      }
+
+      return shortenedURL;
+    }()
+  }, {
+    key: 'showPrevious',
+    value: function () {
+      function showPrevious() {
+        if (this.state.showPrevious == false) {
+          this.setState({
+            showPrevious: true
+          });
+        } else {
+          this.setState({
+            showPrevious: false
+          });
+        }
+      }
+
+      return showPrevious;
     }()
   }, {
     key: 'render',
     value: function () {
       function render() {
+        var shortenedURL = this.shortenedURL();
         return _react2['default'].createElement(
           'div',
           null,
@@ -22790,10 +22839,15 @@ var Container = exports.Container = function (_React$Component) {
           ),
           _react2['default'].createElement('hr', null),
           _react2['default'].createElement(_UrlAdd.UrlAdd, { shortenURL: this.shortenURL }),
+          _react2['default'].createElement(
+            'button',
+            { onClick: this.showPrevious },
+            ' Show/Hide Previous '
+          ),
           _react2['default'].createElement('hr', null),
-          _react2['default'].createElement(_UrlTable.UrlTable, { urls: this.state.urls }),
+          this.state.showShort ? _react2['default'].createElement(_UrlShortened.UrlShortened, { url: shortenedURL }) : null,
           _react2['default'].createElement('hr', null),
-          _react2['default'].createElement(_UrlFilter.UrlFilter, null)
+          this.state.showPrevious ? _react2['default'].createElement(_UrlTable.UrlTable, { urls: this.state.urls }) : null
         );
       }
 
@@ -22803,6 +22857,54 @@ var Container = exports.Container = function (_React$Component) {
 
   return Container;
 }(_react2['default'].Component);
+
+/***/ }),
+/* 189 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.UrlShortened = undefined;
+
+var _react = __webpack_require__(14);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(16);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+// export class UrlShortened extends React.Component{
+//   constructor(props) {
+//     super();
+//   }
+//   render() {
+//     return (
+//       <div> SHORTENED URL:  </div>
+//     );
+//   }
+// }
+
+
+var UrlShortened = exports.UrlShortened = function () {
+  function UrlShortened(props) {
+    return _react2['default'].createElement(
+      'div',
+      null,
+      ' ',
+      props.url.shortURL,
+      ' '
+    );
+  }
+
+  return UrlShortened;
+}();
 
 /***/ })
 /******/ ]);
