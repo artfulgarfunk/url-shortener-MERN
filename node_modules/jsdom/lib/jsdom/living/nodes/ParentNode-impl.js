@@ -1,25 +1,25 @@
 "use strict";
 
 const idlUtils = require("../generated/utils");
+const NodeList = require("../generated/NodeList");
+const HTMLCollection = require("../generated/HTMLCollection");
 const { addNwmatcher } = require("../helpers/selectors");
 const DOMException = require("../../web-idl/DOMException");
 const domSymbolTree = require("../helpers/internal-constants").domSymbolTree;
 const NODE_TYPE = require("../node-type");
-const createHTMLCollection = require("../html-collection").create;
-const updateHTMLCollection = require("../html-collection").update;
 const memoizeQuery = require("../../utils").memoizeQuery;
-const createStaticNodeList = require("../node-list").createStatic;
 
 class ParentNodeImpl {
   get children() {
     if (!this._childrenList) {
-      this._childrenList = createHTMLCollection(this, () => {
-        return domSymbolTree.childrenToArray(this, { filter(node) {
-          return node.nodeType === NODE_TYPE.ELEMENT_NODE;
-        } });
+      this._childrenList = HTMLCollection.createImpl([], {
+        element: this,
+        query: () => domSymbolTree.childrenToArray(this, {
+          filter: node => node.nodeType === NODE_TYPE.ELEMENT_NODE
+        })
       });
     } else {
-      updateHTMLCollection(this._childrenList);
+      this._childrenList._update();
     }
     return this._childrenList;
   }
@@ -65,7 +65,7 @@ ParentNodeImpl.prototype.querySelector = memoizeQuery(function (selectors) {
 // WARNING: this returns a NodeList containing IDL wrappers instead of impls
 ParentNodeImpl.prototype.querySelectorAll = memoizeQuery(function (selectors) {
   if (shouldAlwaysSelectNothing(this)) {
-    return createStaticNodeList([]);
+    return NodeList.create([], { nodes: [] });
   }
   const matcher = addNwmatcher(this);
 
@@ -76,7 +76,7 @@ ParentNodeImpl.prototype.querySelectorAll = memoizeQuery(function (selectors) {
     throw new DOMException(DOMException.SYNTAX_ERR, e.message);
   }
 
-  return createStaticNodeList(list);
+  return NodeList.create([], { nodes: list.map(n => idlUtils.tryImplForWrapper(n)) });
 });
 
 function shouldAlwaysSelectNothing(elImpl) {

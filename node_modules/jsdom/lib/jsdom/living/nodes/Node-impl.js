@@ -6,9 +6,7 @@ const simultaneousIterators = require("../../utils").simultaneousIterators;
 const DOMException = require("../../web-idl/DOMException");
 const NODE_TYPE = require("../node-type");
 const NODE_DOCUMENT_POSITION = require("../node-document-position");
-const createLiveNodeList = require("../node-list").createLive;
-const updateNodeList = require("../node-list").update;
-const updateHTMLCollection = require("../html-collection").update;
+const NodeList = require("../generated/NodeList");
 const documentBaseURLSerialized = require("../helpers/document-base-url").documentBaseURLSerialized;
 const cloneNode = require("../node").clone;
 const attributes = require("../attributes");
@@ -147,9 +145,12 @@ class NodeImpl extends EventTargetImpl {
 
   get childNodes() {
     if (!this._childNodesList) {
-      this._childNodesList = createLiveNodeList(this, () => domSymbolTree.childrenToArray(this));
+      this._childNodesList = NodeList.createImpl([], {
+        element: this,
+        query: () => domSymbolTree.childrenToArray(this)
+      });
     } else {
-      updateNodeList(this._childNodesList);
+      this._childNodesList._update();
     }
 
     return this._childNodesList;
@@ -212,6 +213,9 @@ class NodeImpl extends EventTargetImpl {
       }
 
       this._modified();
+      if (newChildImpl.nodeType === NODE_TYPE.TEXT_NODE) {
+        this._childTextContentChangeSteps();
+      }
 
       if (this._attached && newChildImpl._attach) {
         newChildImpl._attach();
@@ -230,12 +234,16 @@ class NodeImpl extends EventTargetImpl {
     }
 
     if (this._childrenList) {
-      updateHTMLCollection(this._childrenList);
+      this._childrenList._update();
     }
     if (this._childNodesList) {
-      updateNodeList(this._childNodesList);
+      this._childNodesList._update();
     }
     this._clearMemoizedQueries();
+  }
+
+  _childTextContentChangeSteps() {
+    // Default: do nothing
   }
 
   _clearMemoizedQueries() {
@@ -294,13 +302,15 @@ class NodeImpl extends EventTargetImpl {
       throw new DOMException(DOMException.NOT_FOUND_ERR);
     }
 
-    const oldPreviousSibling = oldChildImpl.previousSibling;
+    if (this._ownerDocument) {
+      this._ownerDocument._runPreRemovingSteps(oldChildImpl);
+    }
     domSymbolTree.remove(oldChildImpl);
     this._modified();
     oldChildImpl._detach();
     this._descendantRemoved(this, oldChildImpl);
-    if (this._ownerDocument) {
-      this._ownerDocument._runRemovingSteps(oldChildImpl, this, oldPreviousSibling);
+    if (oldChildImpl.nodeType === NODE_TYPE.TEXT_NODE) {
+      this._childTextContentChangeSteps();
     }
     return oldChildImpl;
   } // raises(DOMException);

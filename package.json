@@ -9,6 +9,9 @@
     "compile": "webpack",
     "watch": "webpack --watch"
   },
+  "engines": {
+    "node": "6.10.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/artfulgarfunk/url-shortener-MERN.git"

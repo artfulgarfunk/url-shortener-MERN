@@ -6,17 +6,11 @@ app.use(bodyParser.json());
 
 const urls = [
   {
-    id: 1, longURL: 'www.aVeryLongUrl.com', shortURL: 'www.shortUrl.com', shortened: new Date('1992-10-26'),
+    id: 1, longURL: 'https://github.com/artfulgarfunk', shortURL: 'www.shortUrl.com', shortened: new Date('1992-10-26'),
   },
   {
-    id: 2, longURL: 'www.AnotherLongOne.com', shortURL: 'www.anotherShort.com', shortened: new Date('1990-6-18'),
+    id: 2, longURL: 'https://www.linkedin.com/in/jack-henderson-9408b0101/', shortURL: 'www.anotherShort.com', shortened: new Date('1990-6-18'),
   },
-  {
-    id: 3, longURL: 'www.YetAnotherLongURL.com', shortURL: 'www.yetAnotherConclusivelyAbbreviated.com', shortened: new Date('1990-12-18'),
-  },
-  {
-    id: 4, longURL: 'www.LooooongYewAreElle.com', shortURL: 'www.short.com', shortened: new Date('2016-05-12'),
-  }
 ]
 
 app.listen(3000, function() {

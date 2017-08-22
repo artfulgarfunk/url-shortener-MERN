@@ -15,6 +15,10 @@ exports.ProcessingInstruction = require("./generated/ProcessingInstruction").int
 exports.Comment = require("./generated/Comment").interface;
 exports.DocumentType = require("./generated/DocumentType").interface;
 exports.DOMImplementation = require("./generated/DOMImplementation").interface;
+exports.NodeList = require("./generated/NodeList").interface;
+exports.HTMLCollection = require("./generated/HTMLCollection").interface;
+exports.HTMLOptionsCollection = require("./generated/HTMLOptionsCollection").interface;
+exports.DOMStringMap = require("./generated/DOMStringMap").interface;
 
 exports.Event = require("./generated/Event").interface;
 exports.CustomEvent = require("./generated/CustomEvent").interface;
@@ -40,6 +44,11 @@ exports.FileList = require("./generated/FileList").interface;
 exports.DOMParser = require("./generated/DOMParser").interface;
 
 exports.FormData = require("./generated/FormData").interface;
+exports.XMLHttpRequestEventTarget = require("./generated/XMLHttpRequestEventTarget").interface;
+exports.XMLHttpRequestUpload = require("./generated/XMLHttpRequestUpload").interface;
+
+exports.NodeIterator = require("./generated/NodeIterator").interface;
+exports.TreeWalker = require("./generated/TreeWalker").interface;
 
 require("./register-elements")(exports);
 
@@ -48,12 +57,7 @@ require("../level2/style")(exports);
 require("../level3/xpath")(exports);
 
 // These are OK but need migration to webidl2js eventually.
-require("./html-collection")(exports);
 require("./node-filter")(exports);
-require("./node-iterator")(exports);
-require("./node-list")(exports);
-require("./xmlhttprequest-event-target")(exports);
-require("./xmlhttprequest-upload")(exports);
 exports.DOMTokenList = require("./dom-token-list").DOMTokenList;
 
 exports.URL = require("whatwg-url").URL;

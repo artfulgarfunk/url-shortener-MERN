@@ -9,7 +9,7 @@ export function UrlTable(props) {
       <thead>
         <h2> Previously Shortened </h2>
         <tr>
-          <th> Orgnl </th>
+          <th> Original </th>
           <th> Shorter </th>
           <th> Shortened </th>
         </tr>

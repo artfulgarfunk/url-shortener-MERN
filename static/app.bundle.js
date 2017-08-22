@@ -9847,7 +9847,7 @@ function UrlTable(props) {
         _react2['default'].createElement(
           'th',
           null,
-          ' Orgnl '
+          ' Original '
         ),
         _react2['default'].createElement(
           'th',
