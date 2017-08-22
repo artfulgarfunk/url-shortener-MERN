@@ -23,7 +23,8 @@
     "body-parser": "^1.17.2",
     "chai": "^4.1.1",
     "express": "^4.15.4",
-    "mongodb": "^2.2.31"
+    "mongodb": "^2.2.31",
+    "valid-url": "^1.0.9"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

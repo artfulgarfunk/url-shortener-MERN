@@ -4,6 +4,7 @@ import {UrlTable} from './UrlTable.jsx';
 import {UrlFilter} from './UrlFilter.jsx';
 import {UrlAdd} from './UrlAdd.jsx';
 import {UrlShortened} from './UrlShortened.jsx';
+var validUrl = require('valid-url');
 
 export class Container extends React.Component {
   constructor() {
@@ -17,6 +18,7 @@ export class Container extends React.Component {
     this.shortenedURL = this.shortenedURL.bind(this);
     this.showPrevious = this.showPrevious.bind(this);
     this.previousButtonContent = this.previousButtonContent.bind(this);
+    this.isValidURL = this.isValidURL.bind(this);
   }
 
   componentDidMount() {
@@ -46,11 +48,20 @@ export class Container extends React.Component {
     }).catch(err => {
       alert("Error in sending data to the server: " + err.message);
      });
+     this.onShortenClick();
   }
 
   shortenURL(url) {
-    this.serverSend(url);
-    this.onShortenClick();
+    if (this.isValidURL(url) ? this.serverSend(url) : alert("Please enter a valid URL"));
+    // this.serverSend(url);
+  }
+
+  isValidURL(url) {
+    if (!(validUrl.isUri(url.longURL))) {
+      return false;
+    } else {
+      return true;
+    };
   }
 
   // Render UrlShortened Component when Shorten is clicked
