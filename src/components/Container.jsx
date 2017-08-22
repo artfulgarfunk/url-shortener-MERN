@@ -16,6 +16,7 @@ export class Container extends React.Component {
     this.onShortenClick = this.onShortenClick.bind(this);
     this.shortenedURL = this.shortenedURL.bind(this);
     this.showPrevious = this.showPrevious.bind(this);
+    this.previousButtonContent = this.previousButtonContent.bind(this);
   }
 
   componentDidMount() {
@@ -78,14 +79,20 @@ export class Container extends React.Component {
     }
   }
 
+  previousButtonContent() {
+    var content = this.state.showPrevious ? "Hide " : "Show ";
+    return content;
+  }
+
   render () {
     var shortenedURL = this.shortenedURL();
+    var buttonContent = this.previousButtonContent();
     return (
       <div>
       <h1> Shortening URLs since 1817 </h1>
       <hr />
       <UrlAdd shortenURL={this.shortenURL}/>
-      <button onClick={this.showPrevious}> Show/Hide Previous </button>
+      <button onClick={this.showPrevious}>  {buttonContent} Previous Urls </button>
       <hr />
       {this.state.showShort ? <UrlShortened url={shortenedURL}/>: null }
       <hr />

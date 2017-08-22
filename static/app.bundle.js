@@ -22710,6 +22710,7 @@ var Container = exports.Container = function (_React$Component) {
     _this.onShortenClick = _this.onShortenClick.bind(_this);
     _this.shortenedURL = _this.shortenedURL.bind(_this);
     _this.showPrevious = _this.showPrevious.bind(_this);
+    _this.previousButtonContent = _this.previousButtonContent.bind(_this);
     return _this;
   }
 
@@ -22825,10 +22826,21 @@ var Container = exports.Container = function (_React$Component) {
       return showPrevious;
     }()
   }, {
+    key: 'previousButtonContent',
+    value: function () {
+      function previousButtonContent() {
+        var content = this.state.showPrevious ? "Hide " : "Show ";
+        return content;
+      }
+
+      return previousButtonContent;
+    }()
+  }, {
     key: 'render',
     value: function () {
       function render() {
         var shortenedURL = this.shortenedURL();
+        var buttonContent = this.previousButtonContent();
         return _react2['default'].createElement(
           'div',
           null,
@@ -22842,7 +22854,9 @@ var Container = exports.Container = function (_React$Component) {
           _react2['default'].createElement(
             'button',
             { onClick: this.showPrevious },
-            ' Show/Hide Previous '
+            '  ',
+            buttonContent,
+            ' Previous Urls '
           ),
           _react2['default'].createElement('hr', null),
           this.state.showShort ? _react2['default'].createElement(_UrlShortened.UrlShortened, { url: shortenedURL }) : null,
@@ -22879,18 +22893,6 @@ var _reactDom = __webpack_require__(16);
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-// export class UrlShortened extends React.Component{
-//   constructor(props) {
-//     super();
-//   }
-//   render() {
-//     return (
-//       <div> SHORTENED URL:  </div>
-//     );
-//   }
-// }
-
 
 var UrlShortened = exports.UrlShortened = function () {
   function UrlShortened(props) {

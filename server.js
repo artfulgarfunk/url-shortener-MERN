@@ -12,7 +12,7 @@ const urls = [
     id: 2, longURL: 'www.AnotherLongOne.com', shortURL: 'www.anotherShort.com', shortened: new Date('1990-6-18'),
   },
   {
-    id: 3, longURL: 'www.YetAnotherLongURL.com', shortURL: 'www.yetAno.com', shortened: new Date('1990-12-18'),
+    id: 3, longURL: 'www.YetAnotherLongURL.com', shortURL: 'www.yetAnotherConclusivelyAbbreviated.com', shortened: new Date('1990-12-18'),
   },
   {
     id: 4, longURL: 'www.LooooongYewAreElle.com', shortURL: 'www.short.com', shortened: new Date('2016-05-12'),
@@ -35,7 +35,6 @@ app.post('/short', (req, res) => {
   console.log(req.url);
   longURL.shortURL = req.url + "/" + longURL.id;
   console.log(longURL.shortURL);
-  // longURL.shortened = new date () now or whatever time format
   longURL.shortened = new Date();
   urls.push(longURL);
   res.json(longURL);
