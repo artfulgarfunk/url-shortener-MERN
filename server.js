@@ -21,7 +21,6 @@ const urls = [
 
 app.listen(process.env.PORT || 5000)
 
-
 app.get('/short/', (req, res) => {
   const metadata = { total_count: urls.length };
   res.json({ _metadata: metadata, records: urls });
