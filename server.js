@@ -19,9 +19,8 @@ const urls = [
   }
 ]
 
-app.listen(3000, function() {
-  console.log('URL Shortener started on port 3000');
-})
+app.listen(process.env.PORT || 5000)
+
 
 app.get('/short/', (req, res) => {
   const metadata = { total_count: urls.length };
