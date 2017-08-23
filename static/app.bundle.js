@@ -9788,6 +9788,7 @@ var UrlRow = exports.UrlRow = function () {
       _react2['default'].createElement(
         'td',
         null,
+        props.doc,
         props.url.shortURL
       ),
       _react2['default'].createElement(
@@ -9828,7 +9829,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function UrlTable(props) {
   var urlRows = props.urls.map(function (url) {
-    return _react2['default'].createElement(_UrlRow.UrlRow, { key: url.id, url: url });
+    return _react2['default'].createElement(_UrlRow.UrlRow, { doc: props.doc, key: url.id, url: url });
   });
   return _react2['default'].createElement(
     'table',
@@ -22825,6 +22826,9 @@ var Container = exports.Container = function (_React$Component) {
 
       return shortenedURL;
     }()
+
+    // Display previously shortened URLs
+
   }, {
     key: 'showPrevious',
     value: function () {

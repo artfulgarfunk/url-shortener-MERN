@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {UrlRow} from './UrlRow.jsx';
 
 export function UrlTable(props) {
-  const urlRows = props.urls.map(url => <UrlRow key={url.id} url={url} />)
+  const urlRows = props.urls.map(url => <UrlRow doc={props.doc} key={url.id} url={url} />)
   return (
     <table className="bordered-table">
       <thead>

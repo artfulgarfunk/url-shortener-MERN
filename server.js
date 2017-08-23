@@ -6,16 +6,16 @@ app.use(bodyParser.json());
 
 const urls = [
   {
-    id: 1, longURL: 'www.aVeryLongUrl.com', shortURL: 'www.shortUrl.com', shortened: new Date('1992-10-26'),
+    id: 1, longURL: 'https://www.tesla.com/en_GB/?redirect=no', shortURL: '/short/1', shortened: new Date('1992-10-26'),
   },
   {
-    id: 2, longURL: 'www.AnotherLongOne.com', shortURL: 'www.anotherShort.com', shortened: new Date('1990-6-18'),
+    id: 2, longURL: 'https://www.google.co.uk/?gfe_rd=cr&ei=QmadWcm7O8Xc8AfXgqnYCw', shortURL: '/short/2', shortened: new Date('1990-6-18'),
   },
   {
-    id: 3, longURL: 'www.YetAnotherLongURL.com', shortURL: 'www.yetAnotherConclusivelyAbbreviated.com', shortened: new Date('1990-12-18'),
+    id: 3, longURL: 'https://www.reddit.com/', shortURL: '/short/3', shortened: new Date('1990-12-18'),
   },
   {
-    id: 4, longURL: 'www.LooooongYewAreElle.com', shortURL: 'www.short.com', shortened: new Date('2016-05-12'),
+    id: 4, longURL: 'https://waitbutwhy.com/', shortURL: '/short/4', shortened: new Date('2016-05-12'),
   }
 ]
 
