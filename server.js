@@ -30,12 +30,12 @@ app.get('/short/', (req, res) => {
 app.post('/short', (req, res) => {
   const longURL = req.body;
   longURL.id = urls.length + 1;
-  console.log(req.url);
+  console.log("Url Shortened");
   longURL.shortURL = req.url + "/" + longURL.id;
-  console.log(longURL.shortURL);
   longURL.shortened = new Date();
   urls.push(longURL);
   res.json(longURL);
+
 });
 
 

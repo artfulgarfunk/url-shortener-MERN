@@ -11,7 +11,8 @@ export class Container extends React.Component {
     super();
     this.state = { urls: [],
                    showShort: false,
-                   showPrevious: false, };
+                   showPrevious: false,
+                 };
     this.shortenURL = this.shortenURL.bind(this);
     this.serverSend = this.serverSend.bind(this);
     this.onShortenClick = this.onShortenClick.bind(this);
@@ -53,7 +54,6 @@ export class Container extends React.Component {
 
   shortenURL(url) {
     if (this.isValidURL(url) ? this.serverSend(url) : alert("Please enter a valid URL"));
-    // this.serverSend(url);
   }
 
   isValidURL(url) {
@@ -71,13 +71,14 @@ export class Container extends React.Component {
     });
   }
 
-  // Get the current shortened url json object
+  // Get the current URL JSON Object
   shortenedURL() {
     var urls = this.state.urls;
     var last_url = urls[urls.length-1];
     return last_url;
   }
 
+  // Display previously shortened URLs
   showPrevious() {
     if (this.state.showPrevious == false) {
     this.setState({
@@ -98,16 +99,17 @@ export class Container extends React.Component {
   render () {
     var shortenedURL = this.shortenedURL();
     var buttonContent = this.previousButtonContent();
+    var currentLocation = (String(document.location)).slice(0,-1);
     return (
       <div>
-      <h1> Shortening URLs since 1817 </h1>
-      <hr />
-      <UrlAdd shortenURL={this.shortenURL}/>
-      <button onClick={this.showPrevious}>  {buttonContent} Previous Urls </button>
-      <hr />
-      {this.state.showShort ? <UrlShortened url={shortenedURL}/>: null }
-      <hr />
-      {this.state.showPrevious ? <UrlTable urls={this.state.urls}/>: null }
+        <h1> Shortening URLs since 1817 </h1>
+        <hr />
+        <UrlAdd shortenURL={this.shortenURL}/>
+        <button onClick={this.showPrevious}> {buttonContent} Previous Urls </button>
+        <hr />
+        {this.state.showShort ? <UrlShortened url={shortenedURL} doc={currentLocation}/>: null }
+        <hr />
+        {this.state.showPrevious ? <UrlTable urls={this.state.urls} doc={currentLocation}/>: null }
       </div>
     );
   }

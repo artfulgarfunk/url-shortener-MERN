@@ -22706,7 +22706,8 @@ var Container = exports.Container = function (_React$Component) {
 
     _this.state = { urls: [],
       showShort: false,
-      showPrevious: false };
+      showPrevious: false
+    };
     _this.shortenURL = _this.shortenURL.bind(_this);
     _this.serverSend = _this.serverSend.bind(_this);
     _this.onShortenClick = _this.onShortenClick.bind(_this);
@@ -22779,7 +22780,6 @@ var Container = exports.Container = function (_React$Component) {
     value: function () {
       function shortenURL(url) {
         if (this.isValidURL(url) ? this.serverSend(url) : alert("Please enter a valid URL")) ;
-        // this.serverSend(url);
       }
 
       return shortenURL;
@@ -22812,7 +22812,7 @@ var Container = exports.Container = function (_React$Component) {
       return onShortenClick;
     }()
 
-    // Get the current shortened url json object
+    // Get the current URL JSON Object
 
   }, {
     key: 'shortenedURL',
@@ -22858,6 +22858,7 @@ var Container = exports.Container = function (_React$Component) {
       function render() {
         var shortenedURL = this.shortenedURL();
         var buttonContent = this.previousButtonContent();
+        var currentLocation = String(document.location).slice(0, -1);
         return _react2['default'].createElement(
           'div',
           null,
@@ -22871,14 +22872,14 @@ var Container = exports.Container = function (_React$Component) {
           _react2['default'].createElement(
             'button',
             { onClick: this.showPrevious },
-            '  ',
+            ' ',
             buttonContent,
             ' Previous Urls '
           ),
           _react2['default'].createElement('hr', null),
-          this.state.showShort ? _react2['default'].createElement(_UrlShortened.UrlShortened, { url: shortenedURL }) : null,
+          this.state.showShort ? _react2['default'].createElement(_UrlShortened.UrlShortened, { url: shortenedURL, doc: currentLocation }) : null,
           _react2['default'].createElement('hr', null),
-          this.state.showPrevious ? _react2['default'].createElement(_UrlTable.UrlTable, { urls: this.state.urls }) : null
+          this.state.showPrevious ? _react2['default'].createElement(_UrlTable.UrlTable, { urls: this.state.urls, doc: currentLocation }) : null
         );
       }
 
@@ -22917,6 +22918,7 @@ var UrlShortened = exports.UrlShortened = function () {
       'div',
       null,
       ' ',
+      props.doc,
       props.url.shortURL,
       ' '
     );
