@@ -4,6 +4,7 @@ import {UrlTable} from './UrlTable.jsx';
 import {UrlFilter} from './UrlFilter.jsx';
 import {UrlAdd} from './UrlAdd.jsx';
 import {UrlShortened} from './UrlShortened.jsx';
+import {Button} from 'react-bootstrap';
 var validUrl = require('valid-url');
 
 export class Container extends React.Component {
@@ -101,15 +102,17 @@ export class Container extends React.Component {
     var buttonContent = this.previousButtonContent();
     var currentLocation = (String(document.location)).slice(0,-1);
     return (
-      <div>
-        <h1> Conveniently Abbreviating since 2017 </h1>
+      <div className="container-fluid">
+      <div className="jumbotron">
+        <h1> Conveniently Abbreviating Since 2017 </h1>
         <hr />
         <UrlAdd shortenURL={this.shortenURL}/>
-        <button onClick={this.showPrevious}> {buttonContent} Previous Urls </button>
+        <Button type="submit" onClick={this.showPrevious}> {buttonContent} Previous Urls </Button>
         <hr />
         {this.state.showShort ? <UrlShortened url={shortenedURL} doc={currentLocation}/>: null }
         <hr />
         {this.state.showPrevious ? <UrlTable urls={this.state.urls} doc={currentLocation}/>: null }
+      </div>
       </div>
     );
   }

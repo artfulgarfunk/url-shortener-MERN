@@ -24,6 +24,9 @@
     "chai": "^4.1.1",
     "express": "^4.15.4",
     "mongodb": "^2.2.31",
+    "react": "^15.6.1",
+    "react-bootstrap": "^0.31.2",
+    "react-dom": "^15.6.1",
     "valid-url": "^1.0.9"
   },
   "devDependencies": {

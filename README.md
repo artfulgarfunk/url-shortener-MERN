@@ -1,4 +1,4 @@
-# url-shortener-MERN
+# Conveniently Abbreviated
 A URL Shortener made with a MERN Stack (MongoDB, Express, React.js and Node.js)
 
 ## Design

@@ -9,9 +9,9 @@ export function UrlTable(props) {
       <thead>
         <h2> Previously Shortened </h2>
         <tr>
-          <th> Orgnl </th>
-          <th> Shorter </th>
-          <th> Shortened </th>
+          <th> Original </th>
+          <th> Conveniently Abbreviated Uniform Resource Locator </th>
+          <th> Time </th>
         </tr>
       </thead>
       <tbody>{urlRows}</tbody>

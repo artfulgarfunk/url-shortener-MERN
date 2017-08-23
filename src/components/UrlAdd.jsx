@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Button} from 'react-bootstrap';
+import {ButtonGroup} from 'react-bootstrap';
 
 export class UrlAdd extends React.Component {
   constructor() {
@@ -18,10 +20,10 @@ export class UrlAdd extends React.Component {
   render() {
     return (
       <div>
-        <form name="urlAdd" onSubmit={this.handleSubmit}>
-          <input type="text" name="longURL" placeholder="Long URl" />
-          <button> Shorten! </button>
+        <form name="urlAdd" onSubmit={this.handleSubmit} id="urladd">
+          <input type="text" name="longURL" placeholder="Copy and Paste the URL" />
         </form>
+        <Button form="urladd" type="submit" bsSize="large" bsStyle="success"> Conveniently Abbreviate!! </Button>
       </div>
     )
   }
