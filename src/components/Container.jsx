@@ -4,7 +4,8 @@ import {UrlTable} from './UrlTable.jsx';
 import {UrlFilter} from './UrlFilter.jsx';
 import {UrlAdd} from './UrlAdd.jsx';
 import {UrlShortened} from './UrlShortened.jsx';
-import {Button} from 'react-bootstrap';
+import {Button, Jumbotron, Grid, Row, Col} from 'react-bootstrap';
+// import {Jumbotron} from 'react-bootstrap';
 var validUrl = require('valid-url');
 
 export class Container extends React.Component {
@@ -103,16 +104,23 @@ export class Container extends React.Component {
     var currentLocation = (String(document.location)).slice(0,-1);
     return (
       <div className="container-fluid">
-      <div className="jumbotron">
-        <h1> Conveniently Abbreviating Since 2017 </h1>
-        <hr />
-        <UrlAdd shortenURL={this.shortenURL}/>
-        <Button type="submit" onClick={this.showPrevious}> {buttonContent} Previous Urls </Button>
-        <hr />
-        {this.state.showShort ? <UrlShortened url={shortenedURL} doc={currentLocation}/>: null }
-        <hr />
-        {this.state.showPrevious ? <UrlTable urls={this.state.urls} doc={currentLocation}/>: null }
-      </div>
+        <Jumbotron>
+        <Grid>
+          <h1> Conveniently Abbreviating Since 2017 </h1>
+          <Row className="show-grid">
+            <UrlAdd shortenURL={this.shortenURL}/>
+          </Row>
+          <Row className="show-grid">
+            <Button type="submit" onClick={this.showPrevious}> {buttonContent} Previous Urls </Button>
+          </Row>
+          <Row className="show-grid">
+            {this.state.showShort ? <UrlShortened url={shortenedURL} doc={currentLocation}/>: null }
+          </Row>
+          <Row className="show-grid">
+            {this.state.showPrevious ? <UrlTable urls={this.state.urls} doc={currentLocation}/>: null }
+          </Row>
+        </Grid>
+        </Jumbotron>
       </div>
     );
   }

@@ -41680,6 +41680,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import {Jumbotron} from 'react-bootstrap';
 var validUrl = __webpack_require__(450);
 
 var Container = exports.Container = function (_React$Component) {
@@ -41852,26 +41853,43 @@ var Container = exports.Container = function (_React$Component) {
           'div',
           { className: 'container-fluid' },
           _react2['default'].createElement(
-            'div',
-            { className: 'jumbotron' },
+            _reactBootstrap.Jumbotron,
+            null,
             _react2['default'].createElement(
-              'h1',
+              _reactBootstrap.Grid,
               null,
-              ' Conveniently Abbreviating Since 2017 '
-            ),
-            _react2['default'].createElement('hr', null),
-            _react2['default'].createElement(_UrlAdd.UrlAdd, { shortenURL: this.shortenURL }),
-            _react2['default'].createElement(
-              _reactBootstrap.Button,
-              { type: 'submit', onClick: this.showPrevious },
-              ' ',
-              buttonContent,
-              ' Previous Urls '
-            ),
-            _react2['default'].createElement('hr', null),
-            this.state.showShort ? _react2['default'].createElement(_UrlShortened.UrlShortened, { url: shortenedURL, doc: currentLocation }) : null,
-            _react2['default'].createElement('hr', null),
-            this.state.showPrevious ? _react2['default'].createElement(_UrlTable.UrlTable, { urls: this.state.urls, doc: currentLocation }) : null
+              _react2['default'].createElement(
+                'h1',
+                null,
+                ' Conveniently Abbreviating Since 2017 '
+              ),
+              _react2['default'].createElement(
+                _reactBootstrap.Row,
+                { className: 'show-grid' },
+                _react2['default'].createElement(_UrlAdd.UrlAdd, { shortenURL: this.shortenURL })
+              ),
+              _react2['default'].createElement(
+                _reactBootstrap.Row,
+                { className: 'show-grid' },
+                _react2['default'].createElement(
+                  _reactBootstrap.Button,
+                  { type: 'submit', onClick: this.showPrevious },
+                  ' ',
+                  buttonContent,
+                  ' Previous Urls '
+                )
+              ),
+              _react2['default'].createElement(
+                _reactBootstrap.Row,
+                { className: 'show-grid' },
+                this.state.showShort ? _react2['default'].createElement(_UrlShortened.UrlShortened, { url: shortenedURL, doc: currentLocation }) : null
+              ),
+              _react2['default'].createElement(
+                _reactBootstrap.Row,
+                { className: 'show-grid' },
+                this.state.showPrevious ? _react2['default'].createElement(_UrlTable.UrlTable, { urls: this.state.urls, doc: currentLocation }) : null
+              )
+            )
           )
         );
       }
@@ -41908,7 +41926,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 var UrlShortened = exports.UrlShortened = function () {
   function UrlShortened(props) {
     return _react2['default'].createElement(
-      'div',
+      'h1',
       null,
       ' ',
       props.doc,

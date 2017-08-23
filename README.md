@@ -7,7 +7,7 @@ A single page app where a user inputs a link and receives a different URL in ret
 The program was carefully structured, with distinctly separate concerns for each part. There's a component for inputting information, another for displaying it, another for storing it and so on.
 Container.jsx is the only component with state, and doesn't render anything itself directly. Instead it passes the information from forms and so on through props to the other child components.
 
-This was an interesting build because instead of using a web MVC framework with strong conventions and "magic" such as Rails or Django, I had to build each individual part. Although the core concept is simple this has a couple of nice features such as dynamically generated React components and asynchronous calls to the server.
+This was an interesting build because instead of using a web MVC framework with strong conventions and "magic" such as Rails or Django, I had to build each individual part. Although the core concept is simple this has a couple of nice features such as dynamically generated React components, stateless functional components and asynchronous calls to the server.
 As a result I understand every line of code within the app (except for node_modules of course!).
 
 Check out the demo on [Heroku](https://conveniently-abbreviated.herokuapp.com/)
@@ -35,6 +35,7 @@ As a user, I can see the number of times a short URL has been visited
 - React
 - Node
 - React Bootstrap
+- Valid URL Node Package
 
 ## Test Technologies
 - Sinon
