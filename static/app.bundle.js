@@ -14112,11 +14112,6 @@ function UrlTable(props) {
       'thead',
       null,
       _react2['default'].createElement(
-        'h2',
-        null,
-        ' Previously Shortened '
-      ),
-      _react2['default'].createElement(
         'tr',
         null,
         _react2['default'].createElement(
@@ -14267,14 +14262,20 @@ var UrlAdd = exports.UrlAdd = function (_React$Component) {
           'div',
           null,
           _react2['default'].createElement(
-            'form',
-            { name: 'urlAdd', onSubmit: this.handleSubmit, id: 'urladd' },
-            _react2['default'].createElement('input', { type: 'text', name: 'longURL', placeholder: 'Copy and Paste the URL' })
-          ),
-          _react2['default'].createElement(
-            _reactBootstrap.Button,
-            { form: 'urladd', type: 'submit', bsSize: 'large', bsStyle: 'success' },
-            ' Conveniently Abbreviate!! '
+            _reactBootstrap.Form,
+            { name: 'urlAdd', onSubmit: this.handleSubmit },
+            _react2['default'].createElement(_reactBootstrap.FormControl, {
+              name: 'longURL',
+              id: 'longURL',
+              type: 'text',
+              label: 'Text',
+              placeholder: 'CopyPasta the Long URL'
+            }),
+            _react2['default'].createElement(
+              _reactBootstrap.Button,
+              { type: 'submit', bsSize: 'large', bsStyle: 'success', block: true },
+              'Conveniently Abbreviate!'
+            )
           )
         );
       }
@@ -41866,28 +41867,44 @@ var Container = exports.Container = function (_React$Component) {
               _react2['default'].createElement(
                 _reactBootstrap.Row,
                 { className: 'show-grid' },
-                _react2['default'].createElement(_UrlAdd.UrlAdd, { shortenURL: this.shortenURL })
-              ),
-              _react2['default'].createElement(
-                _reactBootstrap.Row,
-                { className: 'show-grid' },
                 _react2['default'].createElement(
-                  _reactBootstrap.Button,
-                  { type: 'submit', onClick: this.showPrevious },
-                  ' ',
-                  buttonContent,
-                  ' Previous Urls '
+                  _reactBootstrap.Col,
+                  { md: 10, mdOffset: 1 },
+                  _react2['default'].createElement(_UrlAdd.UrlAdd, { shortenURL: this.shortenURL })
                 )
               ),
               _react2['default'].createElement(
                 _reactBootstrap.Row,
                 { className: 'show-grid' },
-                this.state.showShort ? _react2['default'].createElement(_UrlShortened.UrlShortened, { url: shortenedURL, doc: currentLocation }) : null
+                _react2['default'].createElement(
+                  _reactBootstrap.Col,
+                  { md: 10, mdOffset: 1 },
+                  this.state.showShort ? _react2['default'].createElement(_UrlShortened.UrlShortened, { url: shortenedURL, doc: currentLocation }) : null
+                )
               ),
               _react2['default'].createElement(
                 _reactBootstrap.Row,
                 { className: 'show-grid' },
-                this.state.showPrevious ? _react2['default'].createElement(_UrlTable.UrlTable, { urls: this.state.urls, doc: currentLocation }) : null
+                _react2['default'].createElement(
+                  _reactBootstrap.Col,
+                  { md: 6, mdOffset: 3 },
+                  _react2['default'].createElement(
+                    _reactBootstrap.Button,
+                    { type: 'submit', onClick: this.showPrevious, block: true },
+                    ' ',
+                    buttonContent,
+                    ' Previous Urls '
+                  )
+                )
+              ),
+              _react2['default'].createElement(
+                _reactBootstrap.Row,
+                { className: 'show-grid' },
+                _react2['default'].createElement(
+                  _reactBootstrap.Col,
+                  { md: 10, mdOffset: 1 },
+                  this.state.showPrevious ? _react2['default'].createElement(_UrlTable.UrlTable, { urls: this.state.urls, doc: currentLocation }) : null
+                )
               )
             )
           )

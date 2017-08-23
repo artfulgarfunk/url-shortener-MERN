@@ -7,7 +7,6 @@ export function UrlTable(props) {
   return (
     <table className="bordered-table">
       <thead>
-        <h2> Previously Shortened </h2>
         <tr>
           <th> Original </th>
           <th> Conveniently Abbreviated Uniform Resource Locator </th>

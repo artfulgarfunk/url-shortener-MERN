@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Button} from 'react-bootstrap';
-import {ButtonGroup} from 'react-bootstrap';
+import {Button, Form, FormGroup,FormControl, Grid, Row, Col, HelpBlock, ControlLabel, FieldGroup} from 'react-bootstrap';
 
 export class UrlAdd extends React.Component {
   constructor() {
@@ -20,10 +19,18 @@ export class UrlAdd extends React.Component {
   render() {
     return (
       <div>
-        <form name="urlAdd" onSubmit={this.handleSubmit} id="urladd">
-          <input type="text" name="longURL" placeholder="Copy and Paste the URL" />
-        </form>
-        <Button form="urladd" type="submit" bsSize="large" bsStyle="success"> Conveniently Abbreviate!! </Button>
+        <Form name="urlAdd" onSubmit={this.handleSubmit}>
+          <FormControl
+            name="longURL"
+            id="longURL"
+            type="text"
+            label="Text"
+            placeholder="CopyPasta the Long URL"
+          />
+          <Button type="submit" bsSize="large" bsStyle="success" block>
+            Conveniently Abbreviate!
+          </Button>
+        </Form>
       </div>
     )
   }
